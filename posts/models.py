@@ -1,4 +1,5 @@
 from django.db import models
+from taggit.managers import TaggableManager
 
 '''
 posts:
@@ -20,6 +21,8 @@ class Posts(models.Model):
 
     public_date_time = models.DateTimeField()
     image = models.ImageField(upload_to='post')
+    tags = TaggableManager()
+
     def __str__(self):
         return self.title
     
