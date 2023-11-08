@@ -18,6 +18,8 @@ class Posts(models.Model):
     content=models.TextField(max_length=2000)
     draft =models.BooleanField(default=True)
 
+    public_date_time = models.DateTimeField()
+    image = models.ImageField(upload_to='post')
     def __str__(self):
         return self.title
     
