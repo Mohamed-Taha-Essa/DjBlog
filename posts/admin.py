@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from . models import Posts
+from . models import Post, Category,Comment
 # Register your models here.
 class ProductAdmin(admin.ModelAdmin):
     list_display =['title' , 'draft']
@@ -8,4 +8,6 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields =['title']
 
 
-admin.site.register(Posts,ProductAdmin)
+admin.site.register(Post,ProductAdmin)
+admin.site.register(Comment)
+admin.site.register(Category)

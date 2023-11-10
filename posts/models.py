@@ -19,7 +19,7 @@ posts:
 '''
 # Create your models here.
 
-class Posts(models.Model):
+class Post(models.Model):
     author =models.ForeignKey(User, related_name='post_author'  ,  on_delete=models.CASCADE)
     title = models.CharField( max_length=50)
     content=models.TextField(max_length=2000)
@@ -49,7 +49,7 @@ class Comment(models.Model):
     #relation ship between comment and post  one to many 
     # one post have mulible comment.
     #when add comment determine the post
-    post = models.ForeignKey(Posts, related_name='comment_posts', on_delete=models.SET_NULL ,null=True)
+    post = models.ForeignKey(Post, related_name='comment_posts', on_delete=models.SET_NULL ,null=True)
 
     user = models.CharField( max_length=50)
     comment= models.TextField(max_length=100)
