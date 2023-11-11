@@ -2,8 +2,9 @@
 <ul>
     {% for post in taha %}
 
-    <li>  {{post}} </li>
-
+    <li style ='color: #F9627D;' >  {{post}} ----{{post.author}}  </li>
+    <p style ='color: #83B692;'>  {{post.content}} </p>
+    <hr>
     {% endfor %}
 
 </ul>
