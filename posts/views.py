@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Post
 # Create your views here.
-
+"""
 def post_list(request):
     data = Post.objects.all()
     context ={"taha":data}
@@ -15,3 +15,11 @@ def post_detail(request ,pk):
 
     context = {'post_detail' :post_data}
     return render(request ,'posts/post_detail.html' ,context)
+"""
+from django.views.generic import ListView ,DetailView
+
+class PostList(ListView):
+    model = Post
+
+class PostDetail(DetailView):
+    model =Post
