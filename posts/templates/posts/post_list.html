@@ -1,8 +1,8 @@
 <h2> Posts </h2>
 <ul>
     {% for post in taha %}
-
-    <li style ='color: #F9627D;' >  {{post}} ----{{post.author}}  </li>
+    <a href="/posts/{{post.id}}"><li style ='color: #F9627D;' >  {{post}} </li> </a>
+    
     <p style ='color: #83B692;'>  {{post.content}} </p>
     <hr>
     {% endfor %}

@@ -2,10 +2,10 @@ from django.shortcuts import render
 from .models import Post
 # Create your views here.
 
-def list_posts(request):
+def post_list(request):
     data = Post.objects.all()
     context ={"taha":data}
-    return render(request ,'posts/list_post.html',context)
+    return render(request ,'posts/post_list.html',context)
 
 #what is type of request
 # are requext is parameter i can change it or no ?
