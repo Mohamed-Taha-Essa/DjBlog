@@ -1,0 +1,7 @@
+<!-- blog/templates/blog/edit_post.html -->
+<h2>Edit post</h2>
+<form method="post" action="{% url 'edit_post' post.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save changes</button>
+</form>

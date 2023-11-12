@@ -19,13 +19,16 @@ from django.urls import path ,include
 from django.conf import settings
 from django.conf.urls.static import static
 # from posts.views import post_list ,post_detail
-from posts.views import PostList ,PostDetail
+from posts.views import PostList ,PostDetail ,add_post,edit_post,delete_post
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
+    path('add_post/', add_post, name='add_post'),
+    path('edit_post/<int:post_id>/', edit_post, name='edit_post'),
+    path('delete_post/<int:post_id>/', delete_post, name='delete_post'),
 
-    path('posts/',PostList.as_view() ),
+    path('posts/',PostList.as_view(),name='post_list' ),
     path('posts/<int:pk>',PostDetail.as_view())
 
 ]

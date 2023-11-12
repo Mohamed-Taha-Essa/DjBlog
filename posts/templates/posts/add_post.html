@@ -1,0 +1,7 @@
+<!-- blog/templates/blog/add_post.html -->
+<h2>Add a new post</h2>
+<form method="post" action="{% url 'add_post' %}"enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>

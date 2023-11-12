@@ -3,7 +3,7 @@
     {% for post in post_list %}
     <a href="/posts/{{post.id}}"><li style ='color: #F9627D;' >  {{post}} </li> </a>
     
-    <p style ='color: #83B692;'>  {{post.content}} </p>
+    <p style ='color: #83B692;'>  {{post.content|safe}} </p>
     <hr>
     {% endfor %}
 

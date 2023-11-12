@@ -25,7 +25,7 @@ class Post(models.Model):
     content=models.TextField(max_length=20000)
     draft =models.BooleanField(default=True)
 
-    public_date_time = models.DateTimeField()
+    public_date_time = models.DateTimeField( auto_now=True)
     image = models.ImageField(upload_to='post')
     tags = TaggableManager()
 
