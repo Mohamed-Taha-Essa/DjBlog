@@ -1,6 +1,6 @@
-<h3>Add New Post</h3>
+<h3>Update Post</h3>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="add post">
+    <input type="submit" value="Save">
 </form>

@@ -65,3 +65,14 @@ class CreatePost(CreateView):
     model =Post
     fields ='__all__'
     success_url ='/posts/'
+
+class UpdatePost(UpdateView):
+    model = Post
+    template_name = 'posts/update.html'
+
+    fields ='__all__'   
+    success_url = ('/posts/')  # URL to redirect after successful form submission    
+
+class DeletePost(DeleteView):
+    model = Post
+    success_url =('/posts/')  # URL to redirect after successful deletion
