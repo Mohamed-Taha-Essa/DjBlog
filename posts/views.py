@@ -29,7 +29,7 @@ def creat_post(request):
 
     else:
         form =PostForm()
-    return render(request ,'posts/creat_post.html' ,{'form':form})
+    return render(request ,'posts/post_form.html' ,{'form':form})
 
 def edit_post(request ,pk):
     post =Post.objects.get(id =pk)
@@ -47,12 +47,21 @@ def edit_post(request ,pk):
     return render(request ,'posts/edit_post.html' ,{'form':form})
 
 
+def delete_post(request,pk):
+    post =Post.objects.get(id =pk)
+    post.delete()
+    return redirect('/posts/')
 
 
-from django.views.generic import ListView ,DetailView
-class PostList(ListView):
-    model =  Post
+from django.views.generic import ListView ,DetailView,CreateView,DeleteView,UpdateView
+class PostList(ListView):            #obj_name =name of model_list--->post_list or objects
+    model =  Post                    #template name =post_list.html          
     # context_object_name ='posts'
 
-class PostDetail(DetailView):
+class PostDetail(DetailView):           #post 
+    model =Post                          #post_detail.html
+
+class CreatePost(CreateView):
     model =Post
+    fields ='__all__'
+    success_url ='/posts/'

@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.urls import path ,include
 from django.conf import settings
 from django.conf.urls.static import static
-from posts.views import post_list ,post_detail ,creat_post,edit_post
-from posts.views import PostList ,PostDetail
+from posts.views import post_list ,post_detail ,creat_post,edit_post,delete_post
+from posts.views import PostList ,PostDetail,CreatePost
 
 
 urlpatterns = [
@@ -29,11 +29,11 @@ urlpatterns = [
     path('posts/',post_list ),
     # path('posts/<int:pk>',post_detail)
     #path('posts/',PostList.as_view()),
-    path("posts/new", creat_post),
-
+    # path("posts/new", creat_post),
+    path("posts/add", CreatePost.as_view()),
     path('posts/<int:pk>',PostDetail.as_view()),
     path("posts/<int:pk>/edit", edit_post)      ,
-
+    path('posts/<int:pk>/delete',delete_post),
 ]
 
 urlpatterns +=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
