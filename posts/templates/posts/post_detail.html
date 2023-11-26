@@ -1,12 +1,62 @@
-<ul style ='color: #F9627D;' >
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{post.title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container my-3">
+        <h1>{{post.title}}</h1>
+        <ul style ='color: #F9627D;' >   
+            <li>{{post.author}}</li>
+            <li>{{post.public_date_time}}</li>
+            <li>{{post.category}}</li>
+            <li>{{post.content |safe}}</li>
         
-    <li>{{post.title}}</li>
-    <li>{{post.author}}</li>
-    <li>{{post.public_date_time}}</li>
-    <li>{{post.category}}</li>
-    <li>{{post.content |safe}}</li>
+        </ul>
+        <img src="{{post.image.url}}" alt=""class='img-fluid'>  
+
+    </div>
+    <div class="container mt-4">
+        <h1>Commente : ({{comments |length}})</h1>
+        <ul>
+            {% for comment in comments %}
+        
+                <li>{{comment}}--->>{{comment.comment}}</li>
+            {% empty %}
+                <li>No comment to show  </li>
+        </ul>    
+        
+        {% endfor %}
+
+        
+       <div class ='my-5'>
+        <h3>Add Comment : </h3>
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="add comment">
+        </form>
+        
+       </div>
+
+    </div>
+
 
     
 
-</ul>
-<img src="{{post_detail.image.url}}" alt="">  
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+
+

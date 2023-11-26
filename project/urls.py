@@ -19,7 +19,7 @@ from django.urls import path ,include
 from django.conf import settings
 from django.conf.urls.static import static
 from posts.views import post_list ,post_detail ,creat_post,edit_post,delete_post
-from posts.views import PostList ,PostDetail,CreatePost,UpdatePost,DeletePost
+from posts.views2 import PostList ,PostDetail,CreatePost,UpdatePost,DeletePost
 
 
 urlpatterns = [
@@ -27,16 +27,25 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
 
     path('posts/',post_list ),
-    # path('posts/<int:pk>',post_detail)
-    #path('posts/',PostList.as_view()),
-    # path("posts/new", creat_post),
-    path("posts/add", CreatePost.as_view()),
-    path('posts/<int:pk>',PostDetail.as_view()),
-    path('posts/<int:pk>/update',UpdatePost.as_view()),
-    path('posts/<int:pk>/delete',DeletePost.as_view()),
+    path('posts/<int:pk>',post_detail),
+    path("posts/new", creat_post),
+    path("posts/<int:pk>/edit", edit_post),
+    path('posts/<int:pk>/delete',delete_post),
 
-    # path("posts/<int:pk>/edit", edit_post)      ,
-    # path('posts/<int:pk>/delete',delete_post),
+
+
+
+
+
+
+#class basec view.
+    # path('posts/',PostList.as_view()),
+    # path("posts/add", CreatePost.as_view()),
+    # path('posts/<int:pk>',PostDetail.as_view()),
+    # path('posts/<int:pk>/update',UpdatePost.as_view()),
+    # path('posts/<int:pk>/delete',DeletePost.as_view()),
+
+  
 ]
 
 urlpatterns +=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
