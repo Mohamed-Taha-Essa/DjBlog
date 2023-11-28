@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path ,include
 from django.conf import settings
 from django.conf.urls.static import static
-from posts.views import post_list ,post_detail ,creat_post,edit_post,delete_post
+from posts.views import post_list ,post_detail ,creat_post,edit_post,delete_post,comment_edit
 from posts.views2 import PostList ,PostDetail,CreatePost,UpdatePost,DeletePost
 
 
@@ -32,6 +32,8 @@ urlpatterns = [
     path("posts/<int:pk>/edit", edit_post),
     path('posts/<int:pk>/delete',delete_post),
 
+
+    path('posts/<int:post_pk>/<int:comment_pk>/',comment_edit ,name='comment-edit'),
 
 
 

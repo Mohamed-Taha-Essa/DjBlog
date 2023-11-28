@@ -23,6 +23,7 @@ def post_detail(request ,pk):
             myform =  form.save(commit=False)
             myform.post =post_data
             myform.save()
+            return redirect(f'/posts/{pk}')
     else:
         form =CommentForm()
 
@@ -68,5 +69,23 @@ def delete_post(request,pk):
     post =Post.objects.get(id =pk)
     post.delete()
     return redirect('/posts/')
+
+def comment_edit(request,post_pk ,comment_pk):
+    post =Post.objects.get(id =post_pk)
+    comment = Comment.objects.get(id=comment_pk)
+    if request.method =='POST':
+        form =CommentForm(request.POST,instance=comment)
+        if form.is_valid():
+            myform =form.save(commit=False)
+            myform.post =post
+            myform.save()
+            return redirect(f'/posts/{post_pk}')
+    else:
+        form =CommentForm(instance=comment)
+
+    context = {'comments':comment,
+               'form':form ,
+               'post':post ,}
+    return render(request ,'posts/comment_edit.html' ,context)
 
 
