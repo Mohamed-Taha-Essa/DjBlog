@@ -80,6 +80,18 @@ def comment_edit(request,post_pk ,comment_pk):
             myform.post =post
             myform.save()
             return redirect(f'/posts/{post_pk}')
+
+            ''' if 'action' in request.POST:
+                    if request.POST['action'] == 'Update':
+                        if form.is_valid():
+                            myform =form.save(commit=False)
+                            myform.post =post
+                            myform.save()
+                            return redirect(f'/posts/{post_pk}')
+                    elif request.POST['action'] == 'Cancel':
+                        return redirect(f'/posts/{post_pk}')
+            '''
+
     else:
         form =CommentForm(instance=comment)
 
