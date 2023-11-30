@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.urls import path ,include
 from django.conf import settings
 from django.conf.urls.static import static
-from posts.views import post_list ,post_detail ,creat_post,edit_post,delete_post,comment_edit
+from posts.views import (post_list ,post_detail ,creat_post,
+                         edit_post,delete_post,comment_edit,
+                         comment_delete)
 from posts.views2 import PostList ,PostDetail,CreatePost,UpdatePost,DeletePost
 
 from posts.api import post_list_api,post_detail_api
@@ -36,6 +38,7 @@ urlpatterns = [
    
 # operation on comment
     path('posts/<int:post_pk>/<int:comment_pk>/',comment_edit ,name='comment-edit'),
+    path('posts/<int:post_pk>/<int:comment_pk>/delete/',comment_delete ,name='comment-delete'),
 
 # API
     path('posts/api/' ,post_list_api),

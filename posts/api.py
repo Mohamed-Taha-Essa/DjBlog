@@ -12,7 +12,7 @@ def post_list_api(request):
     return Response({'data':data})
 
 
-@api_view(['GET'])
+@api_view(['GET' ,'DELETE','PUT'])
 def post_detail_api(request,pk):
     post =Post.objects.get(id=pk)
     data =PostSerializer(post).data

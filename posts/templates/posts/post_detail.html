@@ -25,17 +25,15 @@
     <ul class="list-group  ">
         {% for comment in comments %}
             <div class="row">
-                <li class="list-group-item "  >
-            
+                <li class="list-group-item col-12">
+                    <div class="col-8">
+                        <p class="text-secondary"> {{comment}}-->>>>>>>----{{comment.comment}}</p>
+                    </div>
                     <div class="col-6">
-                        <p class="text-secondary"> {{comment}}>------{{comment.comment}}</p>
+                        <a href="{% url 'comment-edit' post.id comment.id %}"  class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{% url 'comment-delete' post.id comment.id %}"  class="btn btn-danger btn-sm">Delete</a>
                     </div>
-                    <div class="col-4">
-                        
-                        <a href="{% url 'comment-edit' post.id comment.id %}"  class="btn btn-primary btn-sm">Edit></a>
-                    </div>
-
-                    {% empty %}
+                   {% empty %}
                     <div class="col-lg-12">
                         <li >No comment to show  </li>
                     </div>
@@ -50,13 +48,12 @@
 <div class ='container my-5'>
     <div class="row">
         <h3>Add Comment : </h3>
-        <form action="/url/to/submit/" method="post" class="form">
+        <form method="post" class="form">
             {% csrf_token %}
 
             {% bootstrap_form form %}
 
             {% bootstrap_button button_type="submit" content="add comment" %}
-            {% bootstrap_button button_type="reset" content="Cancel" %}
         </form>
         
     </div>

@@ -17,9 +17,11 @@
 
             {% bootstrap_form form %}
 
-            {% bootstrap_button button_type="submit" name='action' content="Update" %}
-            {% comment %} {% bootstrap_button button_type="submit" name='action' content="Cancel" %} {% endcomment %}
-            <a href="{% url 'post-detail' post.id  %}"  class="btn btn-danger btn-sm">Cancel></a>
+            {% bootstrap_button button_type="submit"  content="Update" %}
+            <a href="{% url 'post-detail' post.id %}" >
+              <button type="button" class="btn btn-danger">Cancel</button>
+            </a>
+            <!-- <a href="{% url 'post-detail' post.id  %}"  class="btn btn-danger btn-sm">Cancel></a> -->
 
         </form>
         

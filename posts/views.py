@@ -70,6 +70,13 @@ def delete_post(request,pk):
     post.delete()
     return redirect('/posts/')
 
+
+# def add_comment(request ,post_pk ):
+#     post =Post.objects.get(id=post_pk)
+#     if request.method =='POST':
+#         form
+
+
 def comment_edit(request,post_pk ,comment_pk):
     post =Post.objects.get(id =post_pk)
     comment = Comment.objects.get(id=comment_pk)
@@ -100,4 +107,11 @@ def comment_edit(request,post_pk ,comment_pk):
                'post':post ,}
     return render(request ,'posts/comment_edit.html' ,context)
 
+
+def comment_delete(request ,post_pk ,comment_pk):
+    comment = Comment.objects.get(id=comment_pk)
+    post =Post.objects.get(id =post_pk)
+    comment.delete()
+    
+    return redirect(f'/posts/{post_pk}')
 
