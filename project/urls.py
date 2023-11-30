@@ -23,7 +23,7 @@ from posts.views import (post_list ,post_detail ,creat_post,
                          comment_delete)
 from posts.views2 import PostList ,PostDetail,CreatePost,UpdatePost,DeletePost
 
-from posts.api import post_list_api,post_detail_api
+from posts.api import ListApiView,DetailApiView
 
 
 urlpatterns = [
@@ -41,8 +41,9 @@ urlpatterns = [
     path('posts/<int:post_pk>/<int:comment_pk>/delete/',comment_delete ,name='comment-delete'),
 
 # API
-    path('posts/api/' ,post_list_api),
-    path('posts/api/<int:pk>' ,post_detail_api),
+    path('api-auth/', include('rest_framework.urls')),
+    path('posts/api/' ,ListApiView.as_view()),
+    path('posts/api/<int:pk>' ,DetailApiView.as_view()),
 
 
 
