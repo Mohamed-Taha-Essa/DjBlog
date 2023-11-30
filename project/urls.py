@@ -21,27 +21,25 @@ from django.conf.urls.static import static
 from posts.views import post_list ,post_detail ,creat_post,edit_post,delete_post,comment_edit
 from posts.views2 import PostList ,PostDetail,CreatePost,UpdatePost,DeletePost
 
-from posts.api import post_list_api
+from posts.api import post_list_api,post_detail_api
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('add_post/', creat_post, name='add_post'),
-    path('edit_post/<int:post_id>/', edit_post, name='edit_post'),
-    path('delete_post/<int:post_id>/', delete_post, name='delete_post'),
+    path('edit_post/<int:pk>/', edit_post, name='edit_post'),
+    path('delete_post/<int:pk>/', delete_post, name='delete_post'),
 
     path('posts/',post_list ,name='post-list' ),
     path('posts/<int:pk>',post_detail,name='post-detail'),
-    path("posts/new", creat_post),
-    path("posts/<int:pk>/edit", edit_post),
-    path('posts/<int:pk>/delete',delete_post),
-
+   
 # operation on comment
     path('posts/<int:post_pk>/<int:comment_pk>/',comment_edit ,name='comment-edit'),
 
 # API
-    path('posts/api/' ,post_list_api)
+    path('posts/api/' ,post_list_api),
+    path('posts/api/<int:pk>' ,post_detail_api),
 
 
 
