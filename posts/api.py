@@ -28,10 +28,10 @@ from rest_framework import filters
 class ListApiView(generics.ListCreateAPIView):
     queryset=Post.objects.all()
     serializer_class =PostSerializer
-    filter_backends = [DjangoFilterBackend,filters.SearchFilter]
+    filter_backends = [DjangoFilterBackend,filters.SearchFilter,filters.OrderingFilter]
     filterset_fields = ['author', 'draft']
     search_fields = ['title', 'content']
-
+    ordering_fields =['public_date_time']
 
 
 class DetailApiView(generics.RetrieveUpdateDestroyAPIView):
